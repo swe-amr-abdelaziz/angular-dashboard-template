@@ -1,0 +1,13 @@
+<li class="profile">
+  <a class="profile__link" [pTooltip]="!settings.isSidebarExpanded ? profile().name : ''">
+    <div class="profile__image">
+      <img class="profile__image--content" [src]="profile().image" alt="Profile Image" />
+      <div class="profile__image--status" [style.backgroundColor]="statusColor()"></div>
+    </div>
+    <div class="profile__details" *ngIf="settings.isSidebarExpanded">
+      <span class="profile__name">{{ profile().name }}</span>
+      <span class="profile__email">{{ profile().email }}</span>
+    </div>
+    <i class="profile__icon pi pi-arrows-v" *ngIf="settings.isSidebarExpanded"></i>
+  </a>
+</li>
