@@ -1,10 +1,10 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
+  selector: 'app-favorites',
   standalone: false,
-  styleUrl: './app.component.scss',
+  templateUrl: './favorites.component.html',
+  styleUrl: './favorites.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class AppComponent {}
+export class FavoritesComponent {}

@@ -1,10 +1,10 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
+  selector: 'app-tasks',
   standalone: false,
-  styleUrl: './app.component.scss',
+  templateUrl: './tasks.component.html',
+  styleUrl: './tasks.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class AppComponent {}
+export class TasksComponent {}
