@@ -1,0 +1,21 @@
+:root {
+  --color-1: #21242d;
+  --color-2: #515662;
+  --color-3: #6a6e7c;
+  --color-4: #f0f0f0;
+  --color-5: #4864e2;
+  --color-6: var(--p-surface-200);
+  --color-7: #ffffff;
+  --color-8: #000000;
+}
+
+.dark-mode {
+  --color-1: #d3d6de;
+  --color-2: #9ea3ae;
+  --color-3: #838795;
+  --color-4: #1f1f1f;
+  --color-5: #4864e2;
+  --color-6: var(--p-surface-800);
+  --color-7: #121212;
+  --color-8: #ffffff;
+}

@@ -1,0 +1,26 @@
+// Divider
+.p-divider {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+// Breadcrumb
+.p-breadcrumb {
+  padding: 1.8rem !important;
+  background-color: unset !important;
+
+  .p-breadcrumb-item {
+    span {
+      color: var(--color-3) !important;
+    }
+
+    a {
+      text-decoration: none !important;
+    }
+
+    &:last-child span {
+      color: var(--color-1) !important;
+      font-weight: bold;
+    }
+  }
+}
