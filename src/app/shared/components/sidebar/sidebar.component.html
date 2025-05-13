@@ -1,0 +1,14 @@
+<div
+  class="container"
+  [ngClass]="settings.isSidebarExpanded ? 'container__expanded' : ''"
+>
+  <div class="container__upper">
+    <app-sidebar-header />
+    <p-divider />
+    <app-sidebar-menu class="container__sidebar-menu" [routes]="mainRoutes" />
+  </div>
+  <app-sidebar-footer
+    class="container__sidebar-footer"
+    [routes]="secondaryRoutes"
+  />
+</div>

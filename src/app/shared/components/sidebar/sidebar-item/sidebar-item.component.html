@@ -1,0 +1,27 @@
+<ng-template #linkContent>
+  <a class="sidebar-menu__link" [pTooltip]="!settings.isSidebarExpanded ? route.data?.label : ''">
+    <i class="sidebar-menu__icon" [class]="route.data?.icon || 'pi pi-circle-on'"
+      [style.fontSize.rem]="route.data?.icon ? '1' : '0.7'"></i>
+    <span class="sidebar-menu__text" *ngIf="settings.isSidebarExpanded">
+      {{ route.data?.label }}
+    </span>
+    <i *ngIf="showExpandIcon" class="sidebar-menu__icon--expand" [class]="endIcon || 'pi pi-chevron-down'"></i>
+  </a>
+</ng-template>
+
+<li class="sidebar-menu__item--child" *ngIf="!hasChildren()" [routerLink]="routerLink"
+  routerLinkActive="sidebar-menu__active--child" [routerLinkActiveOptions]="{ exact: true }">
+  <ng-container *ngTemplateOutlet="linkContent"></ng-container>
+</li>
+
+<li class="sidebar-menu__item--parent" *ngIf="hasChildren()" (click)="handleClick()"
+  [ngClass]="childActive ? 'sidebar-menu__active--parent' : ''">
+  <ng-container *ngTemplateOutlet="linkContent"></ng-container>
+</li>
+
+<div [@submenu]="{
+    value: expanded() ? 'visible' : 'hidden',
+    params: { transitionParams: '300ms ease-in-out' },
+  }" class="submenu-wrapper">
+  <app-sidebar-menu [routes]="route.children || []" [parentPath]="route.path" />
+</div>

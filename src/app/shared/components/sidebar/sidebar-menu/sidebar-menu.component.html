@@ -1,0 +1,8 @@
+<div class="sidebar-menu" [style.scrollbarWidth]="settings.isSidebarExpanded ? 'thin' : 'none'"
+  [style.marginLeft.rem]="parentPath && settings.isSidebarExpanded ? 1 : 0">
+  <ul class="sidebar-menu__items" [@submenu]="">
+    <ng-container *ngFor="let route of routes">
+      <app-sidebar-item class="sidebar-menu__item" *ngIf="route.path" [route]="route" [parentPath]="parentPath" />
+    </ng-container>
+  </ul>
+</div>

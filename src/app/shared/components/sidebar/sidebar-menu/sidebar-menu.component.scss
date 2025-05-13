@@ -1,0 +1,20 @@
+.sidebar-menu {
+  margin: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+  max-height: calc(100vh - 18rem);
+
+  &__items {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    gap: 0.25rem;
+    align-items: center;
+    cursor: pointer;
+  }
+
+  &__item {
+    width: 100%;
+  }
+}

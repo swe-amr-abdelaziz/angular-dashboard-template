@@ -1,0 +1,27 @@
+<div
+  class="container"
+  [ngClass]="settings.isSidebarExpanded ? 'container__expanded' : ''"
+>
+  <a (click)="navigateToHome()">
+    <span class="container__text" *ngIf="settings.isSidebarExpanded">Nabu</span>
+  </a>
+  <p-button
+    [icon]="settings.isDarkMode ? 'pi pi-moon' : 'pi pi-sun'"
+    variant="outlined"
+    severity="secondary"
+    aria-label="Theme Switcher"
+    *ngIf="settings.isSidebarExpanded"
+    (click)="toggleDarkMode()"
+  />
+  <p-button
+    icon="pi pi-box"
+    class="container__logo"
+    severity="warn"
+    *ngIf="!settings.isSidebarExpanded"
+  />
+  <i
+    class="pi container__toggle-btn"
+    [ngClass]="settings.isSidebarExpanded ? 'pi-angle-left' : 'pi-angle-right'"
+    (click)="toggleExpanded()"
+  ></i>
+</div>
