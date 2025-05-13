@@ -1,0 +1,16 @@
+<p-breadcrumb [model]="items()" [home]="home()">
+  <ng-template #item let-item>
+    <ng-container *ngIf="item.route; else elseBlock">
+      <a [routerLink]="item.route" class="p-breadcrumb-item-link">
+        <span [ngClass]="[item.icon ? item.icon : '', 'text-color']"></span>
+        <span class="text-primary font-semibold">{{ item.label }}</span>
+      </a>
+    </ng-container>
+    <ng-template #elseBlock>
+      <a [href]="item.url">
+        <span class="text-color">{{ item.label }}</span>
+      </a>
+    </ng-template>
+  </ng-template>
+  <ng-template #separator> / </ng-template>
+</p-breadcrumb>

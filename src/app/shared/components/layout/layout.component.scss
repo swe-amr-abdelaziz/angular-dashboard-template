@@ -1,0 +1,9 @@
+.container {
+  display: flex;
+
+  &__body {
+    width: 100%;
+    z-index: 0;
+    padding: 2rem 3rem;
+  }
+}
