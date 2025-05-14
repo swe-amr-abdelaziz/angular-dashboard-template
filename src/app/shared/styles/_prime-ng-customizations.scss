@@ -70,3 +70,15 @@ td {
   height: unset !important;
   width: unset !important;
 }
+
+// Select
+.p-select,
+.p-multiselect-label {
+  height: 34.33px !important;
+  align-items: center !important;
+}
+
+// Datepicker
+.p-datepicker {
+  width: 100% !important;
+}

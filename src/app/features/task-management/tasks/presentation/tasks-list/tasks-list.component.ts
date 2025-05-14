@@ -18,6 +18,7 @@ import { AsyncDirective } from '@app/shared/directives/async.directive';
 })
 export class TasksListComponent extends AsyncDirective implements OnInit {
   tasks = signal<TaskListDto[]>([]);
+  createTaskDialogVisible = signal(false);
 
   constructor(private readonly activatedRoute: ActivatedRoute) {
     super();
@@ -32,5 +33,9 @@ export class TasksListComponent extends AsyncDirective implements OnInit {
       .subscribe((data) => {
         this.tasks.set(data);
       });
+  }
+
+  toggleCreateTaskDialog(visible: boolean): void {
+    this.createTaskDialogVisible.set(visible);
   }
 }

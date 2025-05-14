@@ -1,0 +1,83 @@
+<p-toast />
+<p-confirmdialog />
+<p-dialog class="dialog" header="Create task" [modal]="true" [(visible)]="visible"
+  (visibleChange)="visibleChange.emit($event)" [style]="{ width: '35rem' }">
+  <form [formGroup]="form" (ngSubmit)="confirmSave($event)" novalidate>
+    <div class="dialog__body">
+      <div class="dialog_row dialog__row-1">
+        <div class="dialog__input">
+          <label for="task-name">Task name <span class="dialog__input--required">*</span></label>
+          <input pSize="small" pInputText id="task-name" placeholder="Enter task name" formControlName="name" />
+          <small class="dialog__input--error" *ngIf="invalidRequired('name')">
+            Task name is required</small>
+        </div>
+
+        <div class="dialog__input">
+          <label for="urgency">Urgency <span class="dialog__input--required">*</span></label>
+          <p-select size="small" [options]="[1, 2, 3]" optionLabel="urgency" placeholder="Select"
+            formControlName="urgency">
+            <ng-template #selectedItem let-selectedUrgency>
+              <div class="flex items-center gap-2" *ngIf="selectedUrgency">
+                <p-chip [appChip]="getUrgencyVariant(selectedUrgency - 1)"
+                  [label]="selectedUrgency - 1 | taskUrgency" />
+              </div>
+            </ng-template>
+            <ng-template let-urgencyStatus #item>
+              <div class="flex items-center gap-2">
+                <p-chip [appChip]="getUrgencyVariant(urgencyStatus - 1)" [label]="urgencyStatus - 1 | taskUrgency" />
+              </div>
+            </ng-template>
+          </p-select>
+        </div>
+      </div>
+
+      <div class="dialog__row dialog__row-2">
+        <div class="dialog__input">
+          <label for="description">Description</label>
+          <textarea pSize="small" rows="7" cols="30" placeholder="Describe task" pTextarea [autoResize]="true"
+            formControlName="description"></textarea>
+        </div>
+      </div>
+
+      <div class="dialog_row dialog__row-3">
+        <div class="dialog__input">
+          <label for="start-date">Start date</label>
+          <p-datepicker size="small" formControlName="startDate" [showTime]="true" hourFormat="12" showIcon
+            iconDisplay="input" appendTo="body" />
+        </div>
+
+        <div class="dialog__input">
+          <label for="end-date">End date</label>
+          <p-datepicker size="small" formControlName="endDate" [showTime]="true" hourFormat="12" showIcon
+            iconDisplay="input" appendTo="body" />
+        </div>
+      </div>
+
+      <div class="dialog_row dialog__row-4">
+        <div class="dialog__input">
+          <label for="assigned-to">Assigned to <span class="dialog__input--required">*</span></label>
+          <p-multiselect [options]="users" formControlName="assignedTo" placeholder="Search for members"
+            optionLabel="name" display="chip" size="small" appendTo="body">
+            <ng-template let-user #item>
+              <div class="flex items-center gap-2">
+                <p-chip appChip [isUserChip]="true" [label]="user.name" [image]="user.image" alt="User Image" />
+              </div>
+            </ng-template>
+            <ng-template #dropdownicon></ng-template>
+            <ng-template #filtericon> </ng-template>
+          </p-multiselect>
+          <small class="dialog__input--error" *ngIf="invalidRequired('assignedTo')">
+            Task must be assigned to at least one member</small>
+        </div>
+      </div>
+    </div>
+
+    <p-divider class="dialog__divider" />
+
+    <div class="dialog__actions">
+      <p-button label="Cancel" severity="secondary" (click)="closeDialog()" />
+      <p-button label="Create task" icon="pi pi-chevron-right" severity="contrast" (click)="confirmSave($event)"
+        type="submit" [disabled]="form.invalid || loading" [loading]="loading" />
+    </div>
+  </form>
+</p-dialog>

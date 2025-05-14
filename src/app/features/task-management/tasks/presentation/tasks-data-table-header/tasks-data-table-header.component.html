@@ -1,0 +1,13 @@
+<div class="header">
+  <div class="header__filters">
+    <p-iconfield>
+      <p-inputicon styleClass="pi pi-search" />
+      <input type="text" pInputText placeholder="Search" />
+    </p-iconfield>
+    <p-button label="Filters" icon="pi pi-filter-fill" severity="secondary" />
+  </div>
+  <div class="header__actions">
+    <p-button label="Create task" icon="pi pi-plus" severity="contrast" (click)="openCreateTaskDialog()" />
+    <p-button icon="pi pi-ellipsis-h" aria-label="More" severity="secondary" />
+  </div>
+</div>

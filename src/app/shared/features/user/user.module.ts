@@ -5,6 +5,7 @@ import { UserRepository } from './repositories/user.repository';
 import { GetUserProfileUseCase } from './application/get-profile.use-case';
 import { TooltipModule } from 'primeng/tooltip';
 import { CommonModule } from '@angular/common';
+import { GetUsersListUseCase } from './application/get-users-list.use-case';
 
 @NgModule({
   declarations: [UserProfileComponent],
@@ -15,6 +16,7 @@ import { CommonModule } from '@angular/common';
       useClass: UserApiService,
     },
     GetUserProfileUseCase,
+    GetUsersListUseCase,
   ],
   exports: [UserProfileComponent],
 })
