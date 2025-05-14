@@ -83,8 +83,10 @@ export class SidebarItemComponent extends AsyncDirective implements OnInit {
 
   hasChildren = computed(() => {
     return Boolean(
-      (this.route.children && this.route.children.length) ||
-      this.route.loadChildren,
+      (!this.route.data?.leafRoute &&
+        this.route.children &&
+        this.route.children.length) ||
+        this.route.loadChildren,
     );
   });
 

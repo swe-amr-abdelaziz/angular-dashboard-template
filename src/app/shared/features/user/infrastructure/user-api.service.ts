@@ -5,10 +5,12 @@ import { lastValueFrom } from 'rxjs';
 import { User } from '../domain/user';
 
 @Injectable()
-export class UserApiService implements UserRepository {
-  constructor(private readonly http: HttpClient) {}
+export class UserApiService extends UserRepository {
+  constructor(private readonly http: HttpClient) {
+    super();
+  }
 
-  getProfile(): Promise<User> {
+  override getProfile(): Promise<User> {
     return lastValueFrom(this.http.get<User>('profile'));
   }
 }

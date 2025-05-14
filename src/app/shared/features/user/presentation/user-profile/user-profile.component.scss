@@ -1,6 +1,6 @@
 .profile {
   list-style: none;
-  margin: 0.25rem 0;
+  margin: 1rem 0 0.25rem;
 
   &__link {
     position: relative;
@@ -45,6 +45,7 @@
     justify-content: space-between;
     height: 40px;
     width: 100%;
+    padding-left: 0.5rem;
   }
 
   &__name {

@@ -1,5 +1,5 @@
 <li class="profile">
-  <a class="profile__link" [pTooltip]="!settings.isSidebarExpanded ? profile().name : ''">
+  <a class="profile__link" [pTooltip]="!settings.isSidebarExpanded ? 'Profile' : ''">
     <div class="profile__image">
       <img class="profile__image--content" [src]="profile().image" alt="Profile Image" />
       <div class="profile__image--status" [style.backgroundColor]="statusColor()"></div>

@@ -5,6 +5,7 @@ export interface RouteData {
   label: string;
   icon?: string;
   position?: RoutePosition;
+  leafRoute?: boolean;
 }
 
 export interface AppRoute extends Route {
