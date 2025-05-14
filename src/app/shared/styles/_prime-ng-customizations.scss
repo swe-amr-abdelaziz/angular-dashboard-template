@@ -6,7 +6,7 @@
 
 // Breadcrumb
 .p-breadcrumb {
-  padding: 1.8rem !important;
+  padding: 2rem !important;
   background-color: unset !important;
 
   .p-breadcrumb-item {
@@ -23,4 +23,50 @@
       font-weight: bold;
     }
   }
+}
+
+// Table
+th {
+  padding: 1rem !important;
+
+  font-weight: normal !important;
+  font-size: 0.8rem !important;
+
+  background-color: unset !important;
+  color: var(--color-3) !important;
+}
+
+td {
+  padding: 1.2rem !important;
+  color: var(--color-1) !important;
+}
+
+.p-checkbox-input {
+  width: 0.5rem !important;
+}
+
+// Chip
+.p-chip.p-component {
+  white-space: nowrap;
+}
+
+// Button
+.p-button * {
+  color: unset !important;
+}
+
+// Dialog
+.p-dialog-header,
+.p-dialog-content {
+  padding: 1rem 1.25rem !important;
+}
+
+.p-dialog-header {
+  padding-top: 1.5rem !important;
+}
+
+.p-dialog-close-button {
+  padding: 0rem !important;
+  height: unset !important;
+  width: unset !important;
 }
