@@ -26,15 +26,11 @@ import { TasksDataTableComponent } from './tasks/presentation/tasks-data-table/t
 import { TaskStatusPipe } from './tasks/pipes/task-status.pipe';
 import { TaskUrgencyPipe } from './tasks/pipes/task-urgency.pipe';
 import { ChipDirective } from './tasks/directives/chip.directive';
-import { TasksDataTableHeaderComponent } from './tasks/presentation/tasks-data-table-header/tasks-data-table-header.component';
-import { TasksDataTableFooterComponent } from './tasks/presentation/tasks-data-table-footer/tasks-data-table-footer.component';
 
 @NgModule({
   declarations: [
     TasksListComponent,
     TasksDataTableComponent,
-    TasksDataTableHeaderComponent,
-    TasksDataTableFooterComponent,
 
     ProjectsComponent,
     DepartmentsComponent,
