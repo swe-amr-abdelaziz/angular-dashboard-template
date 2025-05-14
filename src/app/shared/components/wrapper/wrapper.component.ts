@@ -1,11 +1,6 @@
-import {
-  Component,
-  Input,
-  ElementRef,
-  AfterViewInit,
-  ViewChild,
-  ChangeDetectionStrategy,
-} from '@angular/core';
+import { Component, ChangeDetectionStrategy, OnInit } from '@angular/core';
+import { NavigationEnd, NavigationStart, Router } from '@angular/router';
+import { filter, map, merge, Observable } from 'rxjs';
 
 @Component({
   standalone: false,
@@ -14,23 +9,22 @@ import {
   styleUrls: ['./wrapper.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class WrapperComponent implements AfterViewInit {
-  @Input() loading = false;
+export class WrapperComponent implements OnInit {
+  loading$!: Observable<boolean>;
+  private startLoading$!: Observable<boolean>;
+  private endLoading$!: Observable<boolean>;
 
-  @ViewChild('contentWrapper', { static: true }) contentWrapper!: ElementRef;
+  constructor(private router: Router) {}
 
-  contentWidth!: string;
-  contentHeight!: string;
-
-  constructor() {}
-
-  ngAfterViewInit() {
-    const contentEl: HTMLElement | undefined =
-      this.contentWrapper?.nativeElement;
-    if (contentEl) {
-      const rect = contentEl.getBoundingClientRect();
-      this.contentWidth = rect.width + 'px';
-      this.contentHeight = rect.height + 'px';
-    }
+  ngOnInit(): void {
+    this.startLoading$ = this.router.events.pipe(
+      filter((e): e is NavigationStart => e instanceof NavigationStart),
+      map(() => true),
+    );
+    this.endLoading$ = this.router.events.pipe(
+      filter((e): e is NavigationEnd => e instanceof NavigationEnd),
+      map(() => false),
+    );
+    this.loading$ = merge(this.startLoading$, this.endLoading$);
   }
 }

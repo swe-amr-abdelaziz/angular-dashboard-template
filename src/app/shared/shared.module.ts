@@ -3,6 +3,7 @@ import { ButtonModule } from 'primeng/button';
 import { DividerModule } from 'primeng/divider';
 import { Breadcrumb } from 'primeng/breadcrumb';
 import { TooltipModule } from 'primeng/tooltip';
+import { ProgressSpinner } from 'primeng/progressspinner';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { LayoutComponent } from './components/layout/layout.component';
@@ -14,8 +15,8 @@ import { SidebarFooterComponent } from './components/sidebar/sidebar-footer/side
 import { CommonModule } from '@angular/common';
 import { SidebarItemComponent } from './components/sidebar/sidebar-item/sidebar-item.component';
 import { BreadcrumbComponent } from './components/breadcrumb/breadcrumb.component';
-import { WrapperComponent } from './components/wrapper/wrapper.component';
 import { UserModule } from './features/user/user.module';
+import { WrapperComponent } from './components/wrapper/wrapper.component';
 
 @NgModule({
   declarations: [
@@ -29,14 +30,18 @@ import { UserModule } from './features/user/user.module';
     WrapperComponent,
   ],
   imports: [
-    CommonModule,
+    // Core
     AppRoutingModule,
+    BrowserAnimationsModule,
+    CommonModule,
+    UserModule,
+
+    // Primeng
     ButtonModule,
     DividerModule,
     Breadcrumb,
-    BrowserAnimationsModule,
     TooltipModule,
-    UserModule,
+    ProgressSpinner,
   ],
   exports: [LayoutComponent, SidebarItemComponent],
 })

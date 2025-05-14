@@ -1,12 +1,11 @@
-<div class="content-wrapper position-relative">
-  <ng-content></ng-content>
+<div class="wrapper">
+  <div class="content-wrapper">
+    <ng-content></ng-content>
 
-  <div
-    *ngIf="loading"
-    class="spinner-overlay d-flex justify-content-center align-items-center"
-  >
-    <div class="spinner-border" role="status">
-      <span class="sr-only">Loading...</span>
+    <div *ngIf="loading$ | async" class="blur-overlay"></div>
+
+    <div *ngIf="loading$ | async" class="spinner-overlay">
+      <p-progress-spinner class="spinner" *ngIf="true" ariaLabel="loading" />
     </div>
   </div>
 </div>

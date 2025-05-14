@@ -1,11 +1,11 @@
 <div class="container">
   <app-sidebar />
   <p-divider layout="vertical" />
-  <div>
+  <div class="container__content">
     <app-breadcrumb />
-    <div class="container__body">
-      <h1>{{ title() }}</h1>
+    <h1 class="container__title">{{ title() }}</h1>
+    <app-wrapper>
       <router-outlet />
-    </div>
+    </app-wrapper>
   </div>
 </div>
