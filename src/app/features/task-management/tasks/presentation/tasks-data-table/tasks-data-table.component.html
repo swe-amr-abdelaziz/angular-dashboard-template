@@ -1,0 +1,53 @@
+<div class="table">
+  <p-table [value]="tasks" [(selection)]="selectedTasks" dataKey="id">
+    <ng-template #header>
+      <tr>
+        <th style="width: 4rem"><p-tableHeaderCheckbox /></th>
+        <th>Task name</th>
+        <th>Start date</th>
+        <th pSortableColumn="urgency">
+          Urgency <p-sortIcon field="urgency" />
+        </th>
+        <th pSortableColumn="status">Status <p-sortIcon field="status" /></th>
+        <th>Assigned to</th>
+        <th>End date</th>
+        <th>Actions</th>
+      </tr>
+    </ng-template>
+    <ng-template #body let-task>
+      <tr>
+        <td>
+          <p-tableCheckbox [value]="task" />
+        </td>
+        <td>{{ task.name }}</td>
+        <td>
+          {{ task.startDate | date: "MMMM d, y h:mma" }}
+        </td>
+        <td>
+          <p-chip [appChip]="getUrgencyVariant(task)" [label]="task.urgency | taskUrgency" />
+        </td>
+        <td>
+          <p-chip [appChip]="getStatusVariant(task)" [label]="task.status | taskStatus" />
+        </td>
+        <td>
+          <div class="table__assigned-to">
+            <ng-container *ngFor="
+                let user of task.assignedTo;
+                let i = index;
+                trackBy: trackByName
+              ">
+              <p-chip appChip [isUserChip]="true" [label]="user.name" [image]="user.image" alt="User Image" />
+            </ng-container>
+          </div>
+        </td>
+        <td>
+          {{ task.endDate | date: "MMMM d, y h:mma" }}
+        </td>
+        <td>
+          <p-button icon="pi pi-eye" [rounded]="true" [text]="true" severity="secondary" />
+          <p-button icon="pi pi-ellipsis-h" [rounded]="true" [text]="true" severity="secondary" />
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
+</div>

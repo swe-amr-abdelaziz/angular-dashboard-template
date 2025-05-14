@@ -1,15 +1,23 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { TasksComponent } from './tasks/tasks.component';
 import { ProjectsComponent } from './projects/projects.component';
 import { DepartmentsComponent } from './departments/departments.component';
 import { SupportTicketsComponent } from './support-tickets/support-tickets.component';
+import { TasksListComponent } from './tasks/presentation/tasks-list/tasks-list.component';
+import { AppRoute } from '@app/shared/interfaces';
+import { TasksListResolver } from './tasks/resolvers/tasks-list.resolver';
 
-export const taskManagementRoutes: Routes = [
+export const taskManagementRoutes: AppRoute[] = [
   {
     path: 'tasks',
-    component: TasksComponent,
-    data: { label: 'Tasks' },
+    data: { label: 'Tasks', leafRoute: true },
+    children: [
+      {
+        path: '',
+        component: TasksListComponent,
+        resolve: { tasks: TasksListResolver },
+      },
+    ],
   },
   {
     path: 'projects',
